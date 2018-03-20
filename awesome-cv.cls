@@ -145,7 +145,7 @@
 \definecolor{awesome-nephritis}{HTML}{27AE60}
 \definecolor{awesome-concrete}{HTML}{95A5A6}
 \definecolor{awesome-darknight}{HTML}{131A28}
-\colorlet{awesome}{awesome-red}
+\colorlet{awesome}{awesome-emerald}
 
 % Boolean value to switch section color highlighting
 \newbool{acvSectionColorHighlight}
@@ -188,8 +188,8 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\color{text} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
@@ -229,9 +229,9 @@
 \newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
 \newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
+\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{awesome-darknight}}
 \newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{awesome-darknight} #1}}
 
 
 %-------------------------------------------------------------------------------
@@ -666,7 +666,7 @@
   \par\addvspace{2.5ex}
   \phantomsection{}
   \lettersectionstyle{#1}
-  \color{gray}\vhrulefill{0.9pt}
+  \color{awesome-darknight}\vhrulefill{0.9pt}
   \par\nobreak\addvspace{0.4ex}
 }
 
@@ -688,11 +688,19 @@
   \lettertextstyle{\@letteropening}
 }
 
+% Try this (Liesl): Make an opening for the cover letter
+\newcommand*{\makeletteropening}{%
+	\vspace{2cm}
+    \lettertextstyle{\@letteropening}
+}
+
 % Define a closing of the cover letter
 % Usage: \makeletterclosing
 \newcommand*{\makeletterclosing}{%
   \vspace{3.4mm}
-  \lettertextstyle{\@letterclosing} \\\\
+  \lettertextstyle{\@letterclosing} \\
+  \vspace{0.4mm}
+  \includegraphics[width=4cm]{signature} \\
   \letternamestyle{\@firstname\ \@lastname}
   \ifthenelse{\isundefined{\@letterenclosure}}
     {\\}
